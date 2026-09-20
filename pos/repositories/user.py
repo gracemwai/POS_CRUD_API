@@ -7,13 +7,17 @@ class UserRepository:
         self.model = User
 
     def get(self, db: Session, id: int):
-        return db.get(User, id)
+        return db.get(self.model, id)
+
+    def get_by_username(self, db: Session, username: str):
+        """Fetches a single user from the database by their username."""
+        return db.query(self.model).filter(self.model.username == username).first()
 
     def get_all(self, db: Session):
-        return db.query(User).all()
+        return db.query(self.model).all()
 
     def create(self, db: Session, data: dict):
-        db_obj = User(**data)
+        db_obj = self.model(**data)
         db.add(db_obj)
         db.commit()
         db.refresh(db_obj)

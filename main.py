@@ -15,8 +15,11 @@ from pos.routers import (
     sale_router, 
     sale_item_router, 
     payment_router, 
-    receipt_router
+    receipt_router,  
 )
+
+
+
 
 app.include_router(category_router)
 app.include_router(customer_router)
@@ -27,3 +30,8 @@ app.include_router(sale_router)
 app.include_router(sale_item_router)
 app.include_router(payment_router)
 app.include_router(receipt_router)
+
+@app.get("/")
+def root():
+    return {"message": "Welcome to the Point of Sale System API"}
+

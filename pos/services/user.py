@@ -10,6 +10,11 @@ def get_user(db: Session, id: int):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User Not Found")
     return user
 
+def get_user_by_username(db: Session, username: str):
+    user = user_repository.get_by_username(db, username)
+    if not user:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User Not Found")
+    return user
 
 def list_users(db: Session):
     return user_repository.get_all(db)
