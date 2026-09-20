@@ -8,3 +8,5 @@ pytest
 psycopg2-binary
 pyjwt
 passlib
+pwdlib
+argon2-cffi
