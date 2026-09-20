@@ -6,3 +6,5 @@ pydantic
 httpx
 pytest
 psycopg2-binary
+pyjwt
+passlib
